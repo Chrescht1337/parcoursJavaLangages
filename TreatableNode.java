@@ -3,25 +3,56 @@ import java.util.ArrayList;
 public class TreatableNode extends Node{
   private int timesExplored;
   private int treatmentNbr;
+  private ArrayList<TreatableNode> neighbours;
 
-  public TreatableNode(String name_){
-    super(name_);
+
+  public TreatableNode(){
+    super();
     this.timesExplored=0;
     this.treatmentNbr=0;
-
+    this.neighbours= new ArrayList<TreatableNode>();
   }
 
-  public boolean isTreated(){
-    return this.treatmentNbr==0;
+  public synchronized boolean isTreated(){
+    return this.treatmentNbr!=0;
   }
 
-  public void setTreatmentNbr(int i){
+  public synchronized void setTreatmentNbr(int i){
     if (i>0)
       this.treatmentNbr=i;
   }
 
-  public void gotExplored(){
+  public synchronized void gotExplored(){
     this.timesExplored+=1;
+  }
+
+  public void reset(){
+    this.timesExplored=0;
+    this.treatmentNbr=0;
+  }
+
+  public int nbrOfNeighbours(){
+    return this.neighbours.size();
+  }
+
+  public void addNeighbour(TreatableNode n){
+    if (!(this.neighbours.contains(n))){
+      this.neighbours.add(n);
+    }
+  }
+
+  public TreatableNode getNeighbourAt(int i){
+    return this.neighbours.get(i);
+  }
+
+
+  public String toString(){
+    StringBuilder result = new StringBuilder();
+    result.append("Node " +this.getName());
+    result.append(" : passed as "+this.treatmentNbr +".\n");
+    result.append("Node " +this.getName());
+    result.append(" : passed "+this.timesExplored + " times.");
+    return result.toString();
   }
 
 }
