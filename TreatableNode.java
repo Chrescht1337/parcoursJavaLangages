@@ -49,9 +49,9 @@ public class TreatableNode extends Node{
   public String toString(){
     StringBuilder result = new StringBuilder();
     result.append("Node " +this.getName());
-    result.append(" : passed as "+this.treatmentNbr +".\n");
-    result.append("Node " +this.getName());
-    result.append(" : passed "+this.timesExplored + " times.");
+    result.append(" : passed as "+this.treatmentNbr +",");
+//    result.append("Node " +this.getName());
+    result.append(" passed "+this.timesExplored + " times.");
     return result.toString();
   }
 

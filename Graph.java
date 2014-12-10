@@ -8,8 +8,8 @@ public class Graph{
 
   public Graph(){
     Random r=new Random();
-    this.m=r.nextInt(16)+11;
-    this.n=r.nextInt(16)+11;
+    this.m=r.nextInt(15)+5;
+    this.n=r.nextInt(15)+5;
     this.nbrOfNodes=this.m*this.n;
     this.nodesTreated=0;
     this.graph=new TreatableNode[this.m][this.n];
@@ -31,7 +31,27 @@ public class Graph{
         this.graph[i][j].addNeighbour(this.graph[i+1][j-1]);
       }
     }
-  }
+
+    for (int j=0,i=this.m-1;j<this.n-1;j++){
+      this.graph[i][j].addNeighbour(this.graph[i][j+1]);
+    }
+
+    for (int j=0,i=0;j<this.n-1;j++){
+      this.graph[i][j].addNeighbour(this.graph[i][j+1]);
+    }
+
+    //avec ceci, on a créé un graph connexe qui se ressemble tjrs
+    this.graph[this.m-1][this.n-1].addNeighbour(this.graph[0][0]);
+
+    //on ajoute des connections aléatoires
+    int randomEffects=r.nextInt(20)+10;
+    for (int k=0;k<randomEffects;k++){
+      int i=r.nextInt(this.m);
+        for (int j=0;j<this.n;j++){
+          this.graph[i][j].addNeighbour(this.graph[r.nextInt(this.m)][r.nextInt(this.n)]);
+        }
+      }
+    }
 
   public TreatableNode getRandomNode(){
     Random r=new Random();
@@ -47,7 +67,7 @@ public class Graph{
     return this.nodesTreated;
   }
 
-  public boolean nodesAllTreated(){
+  public synchronized boolean nodesAllTreated(){
     return this.nodesTreated==this.nbrOfNodes;
   }
 
