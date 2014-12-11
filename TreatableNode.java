@@ -17,9 +17,10 @@ public class TreatableNode extends Node{
     return this.treatmentNbr!=0;
   }
 
-  public synchronized void setTreatmentNbr(int i){
-    if (i>0)
-      this.treatmentNbr=i;
+  public synchronized void setTreatmentNbr(){
+    if (this.treatmentNbr==0)
+      this.treatmentNbr=NodeCounter.getTreatmentNbr();
+    //this.timesExplored+=1;
   }
 
   public synchronized void gotExplored(){
@@ -43,6 +44,10 @@ public class TreatableNode extends Node{
 
   public TreatableNode getNeighbourAt(int i){
     return this.neighbours.get(i);
+  }
+
+  public int timesExplored(){
+    return this.timesExplored;
   }
 
 
