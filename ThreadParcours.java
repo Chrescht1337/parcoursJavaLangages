@@ -28,47 +28,4 @@ public class ThreadParcours implements Runnable{
     }
     this.initialNode.gotExplored();
   }
-
-
-
-  public static void main(String[] args){
-    Graph g= new Graph();
-    System.out.println(g.getNbrOfNodes());
-    TreatableNode n=g.getRandomNode();
-    NodeCounter.setNbrOfNodes(g.getNbrOfNodes());
-    ThreadParcours tp=new ThreadParcours(g,n);
-    (new Thread(tp)).start();
-    while (Thread.activeCount()!=1){}
-    g.print();
-    NodeCounter.reset(g.getNbrOfNodes());
-    g.reset();
-
-
-    n=g.getRandomNode();
-    System.out.println();
-    System.out.println();
-    System.out.println("New start");
-    (new Thread(new ThreadParcours(g,n))).start();
-    while (Thread.activeCount()!=1){}
-    g.print();
-    g.reset();
-    NodeCounter.reset(g.getNbrOfNodes());
-    n=g.getRandomNode();
-    System.out.println();
-    System.out.println();
-    System.out.println();
-    (new Thread(new ThreadParcours(g,n))).start();
-    while (Thread.activeCount()!=1){}
-    g.print();
-    g.reset();
-    NodeCounter.reset(g.getNbrOfNodes());
-    n=g.getRandomNode();
-    System.out.println();
-    System.out.println();
-    System.out.println();
-    (new Thread(new ThreadParcours(g,n))).start();
-    while (Thread.activeCount()!=1){}
-    g.print();
-
-  }
 }
