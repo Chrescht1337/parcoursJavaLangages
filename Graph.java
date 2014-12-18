@@ -1,3 +1,4 @@
+//Christian Frantzen - 000394691 - BA2 INFO
 import java.util.Random;
 public class Graph{
   private static final int minLine = 25;
@@ -21,10 +22,7 @@ public class Graph{
     this.nbrOfNodes=this.m*this.n;
     this.nodesTreated=0;
     this.graph=new TreatableNode[this.m][this.n];
-
-    //String nodeNames="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
     String tmp;
-
     for (int i=0;i<this.m;i++){
       for (int j=0;j<this.n;j++){
         this.graph[i][j]=new TreatableNode();

@@ -1,3 +1,4 @@
+//Christian Frantzen - 000394691 - BA2 INFO
 import java.util.ArrayList;
 
 public class Node

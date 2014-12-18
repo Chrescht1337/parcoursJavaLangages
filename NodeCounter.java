@@ -1,3 +1,4 @@
+//Christian Frantzen - 000394691 - BA2 INFO
 public final class NodeCounter{
   private static int count=0;
   private static int totalNodes;

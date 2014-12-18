@@ -1,3 +1,4 @@
+//Christian Frantzen - 000394691 - BA2 INFO
 import java.util.Random;
 class MainFile{
   public static void main(String[] args){
@@ -15,7 +16,7 @@ class MainFile{
       NodeCounter.setNbrOfNodes(g.getNbrOfNodes());
       ThreadParcours tp=new ThreadParcours(g,n);
       (new Thread(tp)).start();
-      while (Thread.activeCount()!=1){ //on attend la fin des Threads faisant le parcours
+      while (!NodeCounter.nodesAllTreated()){ //on attend la fin des Threads faisant le parcours
         try{
           Thread.sleep(1000);
         }catch (InterruptedException ex){}

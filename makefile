@@ -1,3 +1,4 @@
+#Christian Frantzen - 000394691 - BA2 INFO
 JC = javac
 .SUFFIXES: .java .class
 .java.class:
